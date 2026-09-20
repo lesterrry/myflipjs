@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "module": "CommonJS",
+    "noLib": true,
+    "target": "ES2015",
+    "types": [],
+    "strict": true,
+    "outDir": ".build"
+  },
+  "files": [
+    "./node_modules/@flipperdevices/fz-sdk/global.d.ts",
+    "./types/mjs-compiler.d.ts"
+  ],
+  "include": [
+    "./scripts/**/*.ts"
+  ],
+  "exclude": [
+    "./node_modules/**/*",
+    "./dist/**/*"
+  ]
+}
