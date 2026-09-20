@@ -11,7 +11,8 @@
 	},
 	"files": [
 		"./node_modules/@flipperdevices/fz-sdk/global.d.ts",
-		"./types/mjs-compiler.d.ts"
+		"./types/mjs-compiler.d.ts",
+		"./types/power.d.ts"
 	],
 	"include": ["./scripts/**/*.ts"],
 	"exclude": ["./node_modules/**/*", "./dist/**/*"]

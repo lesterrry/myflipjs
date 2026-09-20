@@ -1,0 +1,6 @@
+engine biome(1.0)
+language js(typescript)
+
+JsForInStatement(initializer=JsForVariableDeclaration()) as $loop where {
+	register_diagnostic(span=$loop, message="mJS cannot parse a variable declaration in a for-in header. Declare the variable before the loop.")
+}

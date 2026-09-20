@@ -63,11 +63,16 @@ const MJS_SUPPORTED = {
 };
 
 const SDK_MODULE_PREFIX = "@flipperdevices/fz-sdk/";
+const DEVICE_ONLY_MODULE = /^(i2c|spi|usbdisk)$/;
 const normalizeSdkModuleNames = {
 	name: "normalize-fz-sdk-module-names",
 	setup(build) {
 		build.onResolve({ filter: /^@flipperdevices\/fz-sdk\// }, (args) => ({
 			path: args.path.slice(SDK_MODULE_PREFIX.length),
+			external: true,
+		}));
+		build.onResolve({ filter: DEVICE_ONLY_MODULE }, (args) => ({
+			path: args.path,
 			external: true,
 		}));
 	},

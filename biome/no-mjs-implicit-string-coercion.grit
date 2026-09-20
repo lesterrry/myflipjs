@@ -1,0 +1,19 @@
+engine biome(1.0)
+language js(typescript)
+
+`$left + $right` as $addition where {
+	or {
+		$left <: or {
+			JsCallExpression(),
+			JsComputedMemberExpression(),
+			JsStaticMemberExpression()
+		},
+		$right <: or {
+			JsCallExpression(),
+			JsComputedMemberExpression(),
+			JsStaticMemberExpression()
+		}
+	},
+	not $addition <: contains `$_receiver.toString()`,
+	register_diagnostic(span=$addition, message="mJS prohibits implicit type conversion during concatenation. Assign a known string or explicitly call toString() first.")
+}

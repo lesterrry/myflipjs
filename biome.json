@@ -8,10 +8,15 @@
 	"overrides": [
 		{
 			"includes": ["scripts/**/*.ts"],
-			"plugins": ["./biome/no-mjs-template-literals.grit"],
+			"plugins": [
+				"./biome/no-mjs-for-in-declaration.grit",
+				"./biome/no-mjs-implicit-string-coercion.grit",
+				"./biome/no-mjs-template-literals.grit"
+			],
 			"linter": {
 				"rules": {
 					"complexity": {
+						"noImplicitCoercions": "error",
 						"noVoid": "error"
 					},
 					"style": {
