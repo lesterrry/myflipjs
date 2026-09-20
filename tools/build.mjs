@@ -62,6 +62,17 @@ const MJS_SUPPORTED = {
 	using: false,
 };
 
+const SDK_MODULE_PREFIX = "@flipperdevices/fz-sdk/";
+const normalizeSdkModuleNames = {
+	name: "normalize-fz-sdk-module-names",
+	setup(build) {
+		build.onResolve({ filter: /^@flipperdevices\/fz-sdk\// }, (args) => ({
+			path: args.path.slice(SDK_MODULE_PREFIX.length),
+			external: true,
+		}));
+	},
+};
+
 const require = createRequire(import.meta.url);
 const sdkPackagePath = require.resolve("@flipperdevices/fz-sdk/package.json");
 const sdkPackage = JSON.parse(await readFile(sdkPackagePath, "utf8"));
@@ -98,7 +109,7 @@ for (const entry of entries) {
 		format: "cjs",
 		bundle: true,
 		minify: MINIFY,
-		external: ["@flipperdevices/fz-sdk/*"],
+		plugins: [normalizeSdkModuleNames],
 		supported: MJS_SUPPORTED,
 	});
 
