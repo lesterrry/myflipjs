@@ -7,6 +7,7 @@ Flipper's USB serial CLI.
 ## Setup
 
 ```sh
+nvm use
 npm install
 ```
 
