@@ -4,5 +4,43 @@
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["scripts/**/*.ts"],
+			"plugins": ["./biome/no-mjs-template-literals.grit"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noVoid": "error"
+					},
+					"style": {
+						"noRestrictedGlobals": {
+							"level": "error",
+							"options": {
+								"deniedGlobals": {
+									"undefined": "mJS cannot parse the void 0 output generated for undefined. Use a truthiness check or typeof instead."
+								}
+							}
+						},
+						"useBlockStatements": "error",
+						"useTemplate": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["types/**/*.d.ts"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noBannedTypes": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off"
+					}
+				}
+			}
+		}
+	]
 }

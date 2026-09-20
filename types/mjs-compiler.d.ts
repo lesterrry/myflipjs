@@ -1,6 +1,8 @@
-/** biome-ignore-all lint/correctness/noUnusedVariables: TypeScript requires these two marker interfaces for ES2015 type checking. */
 // They add no runtime APIs beyond the Function type declared by the fz-sdk.
-/** biome-ignore-all lint/complexity/noBannedTypes: KISS */
-
 interface CallableFunction extends Function {}
 interface NewableFunction extends Function {}
+
+// mJS arrays support bracket access, but fz-sdk's Array declaration omits it.
+interface Array<T> {
+	[index: number]: T;
+}

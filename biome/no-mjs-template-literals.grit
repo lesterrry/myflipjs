@@ -1,0 +1,6 @@
+engine biome(1.0)
+language js(typescript)
+
+JsTemplateExpression() as $template where {
+	register_diagnostic(span=$template, message="mJS does not support the String.concat output generated from template literals. Use string concatenation instead.")
+}
