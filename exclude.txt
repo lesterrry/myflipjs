@@ -1,0 +1,3 @@
+# Top-level filenames from scripts/, one per line. No paths or wildcards.
+# Their .js files are removed from the Flipper during every sync.
+conf_aiwa.ts

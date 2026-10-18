@@ -4,7 +4,6 @@ import path from "node:path";
 import esbuild from "esbuild";
 
 import {
-	COMPILED_DIR,
 	ENFORCE_SDK_VERSION,
 	MINIFY,
 	OUTPUT_DIR,
@@ -63,7 +62,7 @@ const MJS_SUPPORTED = {
 };
 
 const SDK_MODULE_PREFIX = "@flipperdevices/fz-sdk/";
-const DEVICE_ONLY_MODULE = /^(i2c|spi|usbdisk)$/;
+const DEVICE_ONLY_MODULE = /^(i2c|spi|usbdisk|infrared)$/;
 const normalizeSdkModuleNames = {
 	name: "normalize-fz-sdk-module-names",
 	setup(build) {
@@ -100,15 +99,12 @@ if (entries.length === 0) {
 await rm(OUTPUT_DIR, { recursive: true, force: true });
 
 for (const entry of entries) {
-	const compiledEntry = path.join(
-		COMPILED_DIR,
-		`${path.basename(entry, ".ts")}.js`,
-	);
 	const outputName = `${path.basename(entry, ".ts")}.js`;
 	const output = path.join(OUTPUT_DIR, outputName);
 
 	await esbuild.build({
-		entryPoints: [compiledEntry],
+		// Bundle local TS imports directly so shared functions stay plain mJS.
+		entryPoints: [path.join(SOURCE_DIR, entry)],
 		outfile: output,
 		tsconfig: path.join(import.meta.dirname, "..", "tsconfig.json"),
 		format: "cjs",
@@ -128,5 +124,3 @@ for (const entry of entries) {
 	);
 	console.log(`built scripts/${entry} -> dist/${outputName}`);
 }
-
-await rm(COMPILED_DIR, { recursive: true, force: true });

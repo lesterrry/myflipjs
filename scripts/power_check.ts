@@ -1,10 +1,10 @@
-import * as eventLoop from "@flipperdevices/fz-sdk/event_loop";
-import * as gui from "@flipperdevices/fz-sdk/gui";
+import eventLoop = require("@flipperdevices/fz-sdk/event_loop");
+import gui = require("@flipperdevices/fz-sdk/gui");
 
 import dialog = require("@flipperdevices/fz-sdk/gui/dialog");
 
-import * as notification from "@flipperdevices/fz-sdk/notification";
-import * as power from "@flipperdevices/fz-sdk/power";
+import notification = require("@flipperdevices/fz-sdk/notification");
+import power = require("@flipperdevices/fz-sdk/power");
 
 const CHECK_INTERVAL_MS = 10000;
 const ALARM_INTERVAL_MS = 1000;

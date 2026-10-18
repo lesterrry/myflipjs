@@ -1,4 +1,4 @@
-import * as storage from "@flipperdevices/fz-sdk/storage";
+import storage = require("@flipperdevices/fz-sdk/storage");
 
 const SD_ROOT = "/ext";
 const APPLEDOUBLE_PREFIX = "._";

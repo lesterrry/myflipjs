@@ -12,6 +12,7 @@
 	"files": [
 		"./node_modules/@flipperdevices/fz-sdk/global.d.ts",
 		"./types/mjs-compiler.d.ts",
+		"./types/infrared.d.ts",
 		"./types/power.d.ts"
 	],
 	"include": ["./scripts/**/*.ts"],

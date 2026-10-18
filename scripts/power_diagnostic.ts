@@ -1,13 +1,13 @@
-import * as badusb from "@flipperdevices/fz-sdk/badusb";
-import * as eventLoop from "@flipperdevices/fz-sdk/event_loop";
-import * as flipper from "@flipperdevices/fz-sdk/flipper";
-import * as gpio from "@flipperdevices/fz-sdk/gpio";
-import * as gui from "@flipperdevices/fz-sdk/gui";
+import badusb = require("@flipperdevices/fz-sdk/badusb");
+import eventLoop = require("@flipperdevices/fz-sdk/event_loop");
+import flipper = require("@flipperdevices/fz-sdk/flipper");
+import gpio = require("@flipperdevices/fz-sdk/gpio");
+import gui = require("@flipperdevices/fz-sdk/gui");
 
 import dialog = require("@flipperdevices/fz-sdk/gui/dialog");
 
-import * as notification from "@flipperdevices/fz-sdk/notification";
-import * as storage from "@flipperdevices/fz-sdk/storage";
+import notification = require("@flipperdevices/fz-sdk/notification");
+import storage = require("@flipperdevices/fz-sdk/storage");
 
 const REPORT_PATH = __dirname + "/power_diagnostic.txt";
 const PHASE_REPORT_CHOICE = 0;
